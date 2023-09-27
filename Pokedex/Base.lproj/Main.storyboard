@@ -22,40 +22,158 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Gw-gp-hTr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="271" y="101"/>
+            <point key="canvasLocation" x="271" y="147"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="ITI-Di-q5u">
+        <!--Pokedex-->
+        <scene sceneID="ROG-gH-ygw">
             <objects>
-                <viewController id="8OS-68-Kni" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ki5-gO-2zH">
+                <tableViewController id="dK6-7s-Oyu" customClass="PokedexTableViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="dgp-zf-ePV">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Wag-cP-bSI"/>
-                        <color key="backgroundColor" systemColor="systemMintColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="QYY-DO-Cgq"/>
-                    <navigationItem key="navigationItem" id="YCc-GZ-g6U"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bH2-FN-nyW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pokemonCell" textLabel="cwh-Ez-AfU" style="IBUITableViewCellStyleDefault" id="qWG-RS-HaE">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qWG-RS-HaE" id="cpn-Od-6Y5">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cwh-Ez-AfU">
+                                            <rect key="frame" x="20" y="0.0" width="353" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="jg0-Hl-qQZ" kind="show" id="fKg-qd-hA2"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dK6-7s-Oyu" id="ndd-uS-6es"/>
+                            <outlet property="delegate" destination="dK6-7s-Oyu" id="Kfb-wn-mdg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Pokedex" id="XDz-yn-aIo"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WRZ-YX-ACJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="279" y="790"/>
+            <point key="canvasLocation" x="1054" y="-497"/>
         </scene>
         <!--Pokemon-->
-        <scene sceneID="FJw-Qy-b5s">
+        <scene sceneID="qxZ-IB-2Cp">
             <objects>
-                <viewController id="QjE-YY-1FC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pCO-qm-kZ4">
+                <viewController id="jg0-Hl-qQZ" customClass="PokemonDetailedViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="duw-pi-qyf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="19T-fq-BYe"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KcS-V2-1mX">
+                                <rect key="frame" x="68.666666666666686" y="120.66666666666667" width="256" height="253.33333333333331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="1c0-Bq-8Cn"/>
+                                    <constraint firstAttribute="height" constant="256" id="hL0-KP-vNG"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DK3-Dp-yQ3">
+                                <rect key="frame" x="0.0" y="383" width="393" height="386"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Dby-F4-qYc">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="232"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elA-vQ-Igy">
+                                                <rect key="frame" x="0.0" y="106" width="192.66666666666666" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gv-fm-MzN">
+                                                <rect key="frame" x="200.66666666666663" y="106" width="192.33333333333337" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CcD-WC-e1A">
+                                        <rect key="frame" x="0.0" y="240" width="393" height="20.333333333333314"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3t-wU-cp2">
+                                                <rect key="frame" x="0.0" y="0.0" width="192.66666666666666" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MB-H8-UkT">
+                                                <rect key="frame" x="200.66666666666663" y="0.0" width="192.33333333333337" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Uel-ok-pkq">
+                                        <rect key="frame" x="0.0" y="268.33333333333337" width="393" height="20.333333333333314"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBm-0g-Bbt">
+                                                <rect key="frame" x="0.0" y="0.0" width="192.66666666666666" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xo-t2-zq4">
+                                                <rect key="frame" x="200.66666666666663" y="0.0" width="192.33333333333337" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CvH-nR-flI">
+                                        <rect key="frame" x="0.0" y="296.66666666666663" width="393" height="89.333333333333314"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rDV-Wd-2Wx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DK3-Dp-yQ3" firstAttribute="leading" secondItem="rDV-Wd-2Wx" secondAttribute="leading" id="7gX-R1-Ym2"/>
+                            <constraint firstItem="KcS-V2-1mX" firstAttribute="top" secondItem="rDV-Wd-2Wx" secondAttribute="top" constant="16" id="Vv8-fB-FJG"/>
+                            <constraint firstItem="DK3-Dp-yQ3" firstAttribute="top" secondItem="KcS-V2-1mX" secondAttribute="bottom" constant="8" id="YKh-V8-aDR"/>
+                            <constraint firstItem="rDV-Wd-2Wx" firstAttribute="trailing" secondItem="DK3-Dp-yQ3" secondAttribute="trailing" id="cg2-CB-MRh"/>
+                            <constraint firstItem="KcS-V2-1mX" firstAttribute="centerX" secondItem="duw-pi-qyf" secondAttribute="centerX" id="fcj-sU-miO"/>
+                            <constraint firstItem="rDV-Wd-2Wx" firstAttribute="bottom" secondItem="DK3-Dp-yQ3" secondAttribute="bottom" id="hQc-So-O9S"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Pokemon" image="circle.tophalf.filled" catalog="system" id="RC4-c1-22d"/>
+                    <navigationItem key="navigationItem" title="Pokemon" id="V8m-Mm-Tw9"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pW0-JK-qWC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JX4-of-do0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="271" y="-506"/>
+            <point key="canvasLocation" x="1909" y="-497"/>
+        </scene>
+        <!--Pokedex-->
+        <scene sceneID="PT8-gq-EeJ">
+            <objects>
+                <navigationController id="6PN-jB-QIf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Pokedex" image="circle.tophalf.filled" catalog="system" id="z5S-T4-xwG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="A46-WU-gl9">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dK6-7s-Oyu" kind="relationship" relationship="rootViewController" id="Nvx-bS-w0x"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1P9-AL-cPQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="271" y="-497"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6MJ-p6-ykW">
@@ -67,9 +185,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="QjE-YY-1FC" kind="relationship" relationship="viewControllers" id="rpL-fM-Xgd"/>
+                        <segue destination="6PN-jB-QIf" kind="relationship" relationship="viewControllers" id="EQC-dz-wVo"/>
                         <segue destination="Ruq-Ja-Kfa" kind="relationship" relationship="viewControllers" id="65H-nP-BDC"/>
-                        <segue destination="8OS-68-Kni" kind="relationship" relationship="viewControllers" id="3yv-fK-eJp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lNd-9f-icH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -79,12 +196,10 @@
     </scenes>
     <resources>
         <image name="circle.tophalf.filled" catalog="system" width="128" height="123"/>
+        <image name="person" catalog="system" width="128" height="121"/>
         <image name="photo.on.rectangle.angled" catalog="system" width="128" height="98"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
