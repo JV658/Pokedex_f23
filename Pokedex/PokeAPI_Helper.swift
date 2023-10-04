@@ -12,7 +12,7 @@ enum PokeAPI_Errors: Error {
 }
 
 class PokeAPI_Helper {
-    private static let baseURL = "https://pokeapi.co/api/v2/pokemon"
+    private static let baseURL = "https://pokeapi.co/api/v2/pokemon?limit=1000"
     private static let decoder = JSONDecoder()
     
     // NOTE you will need to create the codable structure "Pokemon"
@@ -46,6 +46,15 @@ class PokeAPI_Helper {
             let data = try await fetch(urlString: urlString)
             let pokedetails = try decoder.decode(PokeDetails.self, from: data)
             return pokedetails
+        } catch {
+            throw error
+        }
+    }
+    
+    public static func fetchPokeImage(urlSring: String) async throws -> Data {
+        do {
+            let data = try await fetch(urlString: urlSring)
+            return data
         } catch {
             throw error
         }

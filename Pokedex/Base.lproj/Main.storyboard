@@ -73,6 +73,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="553-5H-LJU">
+                                <rect key="frame" x="132.66666666666666" y="362" width="127.99999999999997" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Dpx-Yg-BMl"/>
+                                    <constraint firstAttribute="width" constant="128" id="gXS-bx-y4M"/>
+                                </constraints>
+                                <color key="color" systemColor="systemBlueColor"/>
+                            </activityIndicatorView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KcS-V2-1mX">
                                 <rect key="frame" x="68.666666666666686" y="120.66666666666667" width="256" height="253.33333333333331"/>
                                 <constraints>
@@ -92,7 +102,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gv-fm-MzN">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="idValue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gv-fm-MzN">
                                                 <rect key="frame" x="200.66666666666663" y="106" width="192.33333333333337" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -109,7 +119,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MB-H8-UkT">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="heightVal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MB-H8-UkT">
                                                 <rect key="frame" x="200.66666666666663" y="0.0" width="192.33333333333337" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -126,7 +136,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xo-t2-zq4">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wieghtval" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xo-t2-zq4">
                                                 <rect key="frame" x="200.66666666666663" y="0.0" width="192.33333333333337" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -145,6 +155,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DK3-Dp-yQ3" firstAttribute="leading" secondItem="rDV-Wd-2Wx" secondAttribute="leading" id="7gX-R1-Ym2"/>
+                            <constraint firstItem="553-5H-LJU" firstAttribute="centerY" secondItem="duw-pi-qyf" secondAttribute="centerY" id="N3o-Db-4IW"/>
+                            <constraint firstItem="553-5H-LJU" firstAttribute="centerX" secondItem="duw-pi-qyf" secondAttribute="centerX" id="PrM-LR-WZa"/>
                             <constraint firstItem="KcS-V2-1mX" firstAttribute="top" secondItem="rDV-Wd-2Wx" secondAttribute="top" constant="16" id="Vv8-fB-FJG"/>
                             <constraint firstItem="DK3-Dp-yQ3" firstAttribute="top" secondItem="KcS-V2-1mX" secondAttribute="bottom" constant="8" id="YKh-V8-aDR"/>
                             <constraint firstItem="rDV-Wd-2Wx" firstAttribute="trailing" secondItem="DK3-Dp-yQ3" secondAttribute="trailing" id="cg2-CB-MRh"/>
@@ -153,10 +165,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pokemon" id="V8m-Mm-Tw9"/>
+                    <connections>
+                        <outlet property="heightLabel" destination="5MB-H8-UkT" id="7et-GG-VS1"/>
+                        <outlet property="idLabel" destination="5Gv-fm-MzN" id="FrD-6o-sJQ"/>
+                        <outlet property="imageView" destination="KcS-V2-1mX" id="7oq-qp-Gqf"/>
+                        <outlet property="spinner" destination="553-5H-LJU" id="icG-2R-dMl"/>
+                        <outlet property="weightLabel" destination="2xo-t2-zq4" id="XZr-WU-fJv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JX4-of-do0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1909" y="-497"/>
+            <point key="canvasLocation" x="1907.6335877862596" y="-497.18309859154931"/>
         </scene>
         <!--Pokedex-->
         <scene sceneID="PT8-gq-EeJ">
@@ -200,6 +219,9 @@
         <image name="photo.on.rectangle.angled" catalog="system" width="128" height="98"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
