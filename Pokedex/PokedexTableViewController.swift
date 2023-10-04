@@ -51,7 +51,8 @@ class PokedexTableViewController: UITableViewController {
 
         // Configure the cell...
         let pokemon = pokeList[indexPath.row]
-        cell.textLabel!.text = pokemon.name
+//        cell.textLabel!.text = pokemon.name
+        cell.nameLabel.text = pokemon.name
 
         return cell
     }

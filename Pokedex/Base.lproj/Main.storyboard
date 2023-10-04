@@ -33,23 +33,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pokemonCell" textLabel="cwh-Ez-AfU" style="IBUITableViewCellStyleDefault" id="qWG-RS-HaE">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pokemonCell" id="qWG-RS-HaE" customClass="PokemonTableViewCell" customModule="Pokedex" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="80.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qWG-RS-HaE" id="cpn-Od-6Y5">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="80.333335876464844"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cwh-Ez-AfU">
-                                            <rect key="frame" x="20" y="0.0" width="353" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7x7-zn-M2n">
+                                            <rect key="frame" x="8" y="8" width="64" height="64.333333333333329"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="64" id="fdA-Be-pjc"/>
+                                                <constraint firstAttribute="width" constant="64" id="q8k-kb-wig"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PokeName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOg-84-IEM">
+                                            <rect key="frame" x="88" y="29.666666666666671" width="257" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="AOg-84-IEM" firstAttribute="leading" secondItem="7x7-zn-M2n" secondAttribute="trailing" constant="16" id="EzL-m8-xVf"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="AOg-84-IEM" secondAttribute="trailing" constant="28" id="KfZ-mG-ekI"/>
+                                        <constraint firstItem="AOg-84-IEM" firstAttribute="centerY" secondItem="7x7-zn-M2n" secondAttribute="centerY" id="PsJ-ma-jMi"/>
+                                        <constraint firstAttribute="bottom" secondItem="7x7-zn-M2n" secondAttribute="bottom" constant="8" id="R0D-L6-eK7"/>
+                                        <constraint firstItem="7x7-zn-M2n" firstAttribute="leading" secondItem="cpn-Od-6Y5" secondAttribute="leading" constant="8" id="R22-3h-XzY"/>
+                                        <constraint firstAttribute="bottom" secondItem="7x7-zn-M2n" secondAttribute="bottom" constant="8" id="gKo-jG-g4V"/>
+                                        <constraint firstItem="7x7-zn-M2n" firstAttribute="top" secondItem="cpn-Od-6Y5" secondAttribute="top" constant="8" id="sK7-zS-Ykc"/>
+                                        <constraint firstItem="7x7-zn-M2n" firstAttribute="top" secondItem="cpn-Od-6Y5" secondAttribute="top" constant="8" id="vlm-5g-beq"/>
+                                        <constraint firstItem="7x7-zn-M2n" firstAttribute="leading" secondItem="cpn-Od-6Y5" secondAttribute="leading" constant="8" id="xWC-E3-Dbw"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="nameLabel" destination="AOg-84-IEM" id="rOg-XV-IWd"/>
+                                    <outlet property="pokeImageView" destination="7x7-zn-M2n" id="Y9a-BI-jh6"/>
                                     <segue destination="jg0-Hl-qQZ" kind="show" id="fKg-qd-hA2"/>
                                 </connections>
                             </tableViewCell>

@@ -17,6 +17,7 @@
 		DB3FB75F2AC4D33800ADC041 /* Pokedex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3FB75E2AC4D33800ADC041 /* Pokedex.swift */; };
 		DB3FB7612AC4DA1600ADC041 /* PokemonDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3FB7602AC4DA1600ADC041 /* PokemonDetailedViewController.swift */; };
 		DB3FB7632AC4E5F900ADC041 /* PokeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3FB7622AC4E5F900ADC041 /* PokeDetail.swift */; };
+		DB6450F22ACE126B003BEF8B /* PokemonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6450F12ACE126B003BEF8B /* PokemonTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DB3FB75E2AC4D33800ADC041 /* Pokedex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedex.swift; sourceTree = "<group>"; };
 		DB3FB7602AC4DA1600ADC041 /* PokemonDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailedViewController.swift; sourceTree = "<group>"; };
 		DB3FB7622AC4E5F900ADC041 /* PokeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeDetail.swift; sourceTree = "<group>"; };
+		DB6450F12ACE126B003BEF8B /* PokemonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				DB20DD952AC4C5B100C494E9 /* AppDelegate.swift */,
 				DB20DD972AC4C5B100C494E9 /* SceneDelegate.swift */,
 				DB3FB75A2AC4CDCD00ADC041 /* PokedexTableViewController.swift */,
+				DB6450F12ACE126B003BEF8B /* PokemonTableViewCell.swift */,
 				DB3FB7602AC4DA1600ADC041 /* PokemonDetailedViewController.swift */,
 				DB20DD9B2AC4C5B100C494E9 /* Main.storyboard */,
 				DB3FB75C2AC4CE2C00ADC041 /* PokeAPI_Helper.swift */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB3FB7612AC4DA1600ADC041 /* PokemonDetailedViewController.swift in Sources */,
+				DB6450F22ACE126B003BEF8B /* PokemonTableViewCell.swift in Sources */,
 				DB3FB75B2AC4CDCD00ADC041 /* PokedexTableViewController.swift in Sources */,
 				DB20DD962AC4C5B100C494E9 /* AppDelegate.swift in Sources */,
 				DB3FB75F2AC4D33800ADC041 /* Pokedex.swift in Sources */,
