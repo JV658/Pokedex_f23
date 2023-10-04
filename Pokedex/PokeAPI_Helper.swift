@@ -18,6 +18,9 @@ class PokeAPI_Helper {
     // NOTE you will need to create the codable structure "Pokemon"
     private static func fetch(urlString: String) async throws -> Data {
         // convert url string into a URL **safely**
+        for _ in 0...1000000{
+            continue
+        }
         guard
             let url = URL(string: urlString)
         else {throw PokeAPI_Errors.CannotConvertStringToURL}

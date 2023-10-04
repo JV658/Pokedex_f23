@@ -61,7 +61,7 @@ class PokedexTableViewController: UITableViewController {
          set pokeimage as pokeImageView.image
          */
         
-        Task {
+        let cellTask = Task {
             do{
                 let pokeDetails = try await PokeAPI_Helper.fetchPokeDetails(urlString: pokemon.url)
                 let pokeImageData = try await PokeAPI_Helper.fetchPokeImage(urlSring: pokeDetails.sprites.front_default!)
@@ -71,6 +71,8 @@ class PokedexTableViewController: UITableViewController {
                 print(error)
             }
         }
+        
+        cell.task = cellTask
         
 
         return cell

@@ -12,6 +12,8 @@ class PokemonTableViewCell: UITableViewCell {
     @IBOutlet weak var pokeImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    var task = Task {}
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,6 +23,11 @@ class PokemonTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func prepareForReuse() {
+        pokeImageView.image = UIImage(systemName: "person")
+        task.cancel()
     }
 
 }
