@@ -10,6 +10,7 @@ import UIKit
 class PokedexTableViewController: UITableViewController {
 
     var pokeList = [Pokemon]()
+    var next: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class PokedexTableViewController: UITableViewController {
             do{
                 let pokedex = try await PokeAPI_Helper.fetchPokedex()
                 pokeList = pokedex.results
+                next = pokedex.next
                 tableView.reloadData()
             } catch {
                 print(error)
@@ -52,6 +54,23 @@ class PokedexTableViewController: UITableViewController {
         cell.textLabel!.text = pokemon.name
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if indexPath.row + 1 >= pokeList.count {
+            // fetch more pokemone
+            print("fetch more pokemon")
+            Task {
+                do {
+                    let pokedex = try await PokeAPI_Helper.fetchPokedex(next)
+                    pokeList.append(contentsOf: pokedex.results)
+                    tableView.reloadData()
+                } catch {
+                    print(error)
+                }
+            }
+        }
     }
 
     /*
