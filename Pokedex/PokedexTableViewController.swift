@@ -47,12 +47,21 @@ class PokedexTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell", for: indexPath) as! PokemonTableViewCell
 
         // Configure the cell...
         let pokemon = pokeList[indexPath.row]
 //        cell.textLabel!.text = pokemon.name
         cell.nameLabel.text = pokemon.name
+        
+        
+        /**
+         create a task to fetch poke details
+        create a task to fetch poke image
+         set pokeimage as pokeImageView.image
+         */
+        
+        cell.pokeImageView.image = UIImage(systemName: "person")
 
         return cell
     }
