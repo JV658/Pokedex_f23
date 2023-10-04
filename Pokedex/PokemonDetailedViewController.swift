@@ -10,6 +10,7 @@ import UIKit
 class PokemonDetailedViewController: UIViewController {
 
     var pokemon: Pokemon!
+    var pokeDetails: PokeDetails?
     
     
     override func viewDidLoad() {
@@ -17,6 +18,18 @@ class PokemonDetailedViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.title = pokemon.name
+        
+        Task {
+            do{
+                pokeDetails = try await PokeAPI_Helper.fetchPokeDetails(urlString: pokemon.url)
+                print(pokeDetails?.id)
+                print(pokeDetails?.height)
+                print(pokeDetails?.weight)
+                print(pokeDetails?.sprites.front_default)
+            } catch {
+                print(error)
+            }
+        }
     }
     
 

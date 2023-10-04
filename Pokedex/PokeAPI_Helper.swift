@@ -41,14 +41,20 @@ class PokeAPI_Helper {
         }
     }
     
-    public static func fetchPokeDetails(urlString: String) async throws -> Pokedetails {
+    public static func fetchPokeDetails(urlString: String) async throws -> PokeDetails {
         do {
             let data = try await fetch(urlString: urlString)
-            let pokedetails = try decoder.decode(Pokedetails.self, from: data)
+            let pokedetails = try decoder.decode(PokeDetails.self, from: data)
             return pokedetails
         } catch {
             throw error
         }
     }
+    
+    /**
+     create a new method to fetch images
+     
+     accept a urlString and return data
+     */
     
 }
