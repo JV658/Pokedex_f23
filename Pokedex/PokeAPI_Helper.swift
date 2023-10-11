@@ -12,9 +12,10 @@ enum PokeAPI_Errors: Error {
     case cannotCreateURLComponent
 }
 
-class PokeAPI_Helper {
+actor PokeAPI_Helper {
     private static let baseURL = "https://pokeapi.co/api/v2/pokemon"
     private static let decoder = JSONDecoder()
+    private static let cache: NSCache<NSString, CacheEntryObject> = NSCache()
     
     // NOTE you will need to create the codable structure "Pokemon"
     private static func fetch(urlString: String) async throws -> Data {
@@ -24,11 +25,32 @@ class PokeAPI_Helper {
             let url = URL(string: urlString)
         else {throw PokeAPI_Errors.CannotConvertStringToURL}
         
-        do{
+        
+        if let cached = cache[url] {
+            switch cached {
+            case let .inProgress(task):
+                return try await task.value
+            case let .ready(data):
+                return data
+            }
+        }
+        
+        print(urlString)
+
+        
+        let task = Task {
             // create a datatask to fetch the information from the URL
             let (data, _) = try await URLSession.shared.data(from: url)
             return data
+        }
+        
+        cache[url] = .inProgress(task)
+        do{
+            let data = try await task.value
+            cache[url] = .ready(data)
+            return data
         } catch {
+            cache[url] = nil
             throw error
         }
     }
