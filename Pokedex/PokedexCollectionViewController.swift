@@ -21,6 +21,7 @@ import UIKit
 class PokedexCollectionViewController: UICollectionViewController {
     
     var pokeImages: [UIImage] = []
+    var offset = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,22 +34,17 @@ class PokedexCollectionViewController: UICollectionViewController {
         Task {
             do {
                 // list of pokemone (first 20)
-                let pokedex = try await PokeAPI_Helper.fetchPokedex()
+                let pokedex = try await PokeAPI_Helper.fetchPokedex(offset: 0, limit: 50)
+                offset = 50;
                 // get the images (sprites) for all these pokemon
                 for pokemon in pokedex.results {
-                    let pokeData = try await PokeAPI_Helper.fetchPokeDetails(urlString: pokemon.url)
-                    
-                    if let front_default = pokeData.sprites.front_default {
-                        let img = try await PokeAPI_Helper.fetchPokeImage(urlSring: front_default)
-                        pokeImages.append(UIImage(data: img)!)
-                    }
-                    
-                    if let front_female = pokeData.sprites.front_female {
-                        let img = try await PokeAPI_Helper.fetchPokeImage(urlSring: front_female)
-                        pokeImages.append(UIImage(data: img)!)
+                    let images = try await PokeAPI_Helper.fetchPokeImages(pokeDetailURL: pokemon.url)
+                    for image in images {
+                        pokeImages.append(UIImage(data: image)!)
+                        collectionView.insertItems(at: [IndexPath(row: pokeImages.count - 1, section: 0)])
                     }
                 }
-                collectionView.reloadData()
+//                collectionView.reloadData()
                 // append sprites to pokeImage array
             } catch {
                 print(error)
@@ -86,6 +82,13 @@ class PokedexCollectionViewController: UICollectionViewController {
         cell.pokeImageView.image = pokeImages[indexPath.row]
     
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if indexPath.row + 1 == pokeImages.count - 10 {
+            // run pokeapi helper method that fetch images from a pokedetail url
+        }
     }
 
     // MARK: UICollectionViewDelegate

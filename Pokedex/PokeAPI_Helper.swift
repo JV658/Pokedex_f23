@@ -102,6 +102,24 @@ actor PokeAPI_Helper {
         }
     }
     
+    public static func fetchPokeImages(pokeDetailURL: String) async throws -> [Data] {
+        let pokeData = try await PokeAPI_Helper.fetchPokeDetails(urlString: pokeDetailURL)
+        
+        var images: [Data] = []
+        
+        if let front_default = pokeData.sprites.front_default {
+            let img = try await PokeAPI_Helper.fetchPokeImage(urlSring: front_default)
+            images.append(img)
+        }
+        
+        if let front_female = pokeData.sprites.front_female {
+            let img = try await PokeAPI_Helper.fetchPokeImage(urlSring: front_female)
+            images.append(img)
+        }
+        
+        return images
+    }
+    
     /**
      create a new method to fetch images
      
