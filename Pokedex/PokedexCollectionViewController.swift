@@ -22,6 +22,7 @@ class PokedexCollectionViewController: UICollectionViewController {
     
     var pokeImages: [UIImage] = []
     var offset = 0
+    var inProgress = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class PokedexCollectionViewController: UICollectionViewController {
         
         Task {
             do {
+                inProgress = true
                 // list of pokemone (first 20)
                 let pokedex = try await PokeAPI_Helper.fetchPokedex(offset: 0, limit: 50)
                 offset = 50;
@@ -44,6 +46,7 @@ class PokedexCollectionViewController: UICollectionViewController {
                         collectionView.insertItems(at: [IndexPath(row: pokeImages.count - 1, section: 0)])
                     }
                 }
+                inProgress = false
 //                collectionView.reloadData()
                 // append sprites to pokeImage array
             } catch {
@@ -86,8 +89,24 @@ class PokedexCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        if indexPath.row + 1 == pokeImages.count - 10 {
+        if indexPath.row + 1 == pokeImages.count
+            && !inProgress{
             // run pokeapi helper method that fetch images from a pokedetail url
+            Task {
+                inProgress = true
+                let pokedex = try await PokeAPI_Helper.fetchPokedex(offset: offset)
+                offset += 20
+                inProgress = false
+
+                for pokemon in pokedex.results {
+                    let images = try await PokeAPI_Helper.fetchPokeImages(pokeDetailURL: pokemon.url)
+                    for image in images {
+                        pokeImages.append(UIImage(data: image)!)
+//                        collectionView.insertItems(at: [IndexPath(row: pokeImages.count - 1, section: 0)])
+                    }
+                }
+                collectionView.reloadData()
+            }
         }
     }
 
