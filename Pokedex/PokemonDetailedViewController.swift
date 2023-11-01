@@ -6,18 +6,38 @@
 //
 
 import UIKit
+import CoreData
 
 class PokemonDetailedViewController: UIViewController {
 
     var pokemon: Pokemon!
     var pokeDetails: PokeDetails!
+    var container: NSPersistentContainer!
+    var isFav: Bool!
+    var name: String!
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
-    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    @IBAction func toggleFavorite(_ sender: UIButton) {
+        // change button image and tint color
+        if isFav {
+            sender.setImage(UIImage(systemName: "star"), for: .normal)
+            sender.tintColor = .black
+            // TODO: remove favorite
+        } else {
+            sender.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            sender.tintColor = .yellow
+            // add this favorite to pokemon
+            let fav = Favorites(context: container.viewContext)
+            fav.id = Int16(idLabel.text!)!
+            fav.name = pokemon.name
+            (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +48,23 @@ class PokemonDetailedViewController: UIViewController {
         idLabel.text = ""
         heightLabel.text = ""
         weightLabel.text = ""
+        
+        container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+        
+        // TODO: fetch this pokemon from Core Data
+        // if it exists then it is already favorited
+        let favoritesFetch = NSFetchRequest<Favorites>(entityName: "Favorites")
+        
+        let results = try! container.viewContext.fetch(favoritesFetch)
+        
+        print(results)
+        
+        if(results.count != 0){
+            // if already fav make star yellow
+            isFav = true
+        } else {
+            isFav = false
+        }
         
         Task {
             do{
