@@ -165,6 +165,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="jg0-Hl-qQZ" kind="show" id="UR3-Zl-FXV"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -305,6 +308,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Pokemon" id="V8m-Mm-Tw9"/>
                     <connections>
+                        <outlet property="favButton" destination="jT1-Lo-VFF" id="KJv-gj-aGi"/>
                         <outlet property="heightLabel" destination="5MB-H8-UkT" id="7et-GG-VS1"/>
                         <outlet property="idLabel" destination="5Gv-fm-MzN" id="FrD-6o-sJQ"/>
                         <outlet property="imageView" destination="KcS-V2-1mX" id="7oq-qp-Gqf"/>
@@ -314,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JX4-of-do0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1907.6335877862596" y="-497.18309859154931"/>
+            <point key="canvasLocation" x="2607" y="68"/>
         </scene>
         <!--Pokedex-->
         <scene sceneID="PT8-gq-EeJ">
@@ -353,6 +357,9 @@
             <point key="canvasLocation" x="-634" y="-203"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fKg-qd-hA2"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="circle.tophalf.filled" catalog="system" width="128" height="123"/>
         <image name="person" catalog="system" width="128" height="121"/>

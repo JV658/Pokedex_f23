@@ -92,14 +92,16 @@ class FavoritesTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let dst = segue.destination as! PokemonDetailedViewController
+         // get indexpath of cell that was selected
+         let index = tableView.indexPathForSelectedRow!.row
+         // pass the name and url to the dst
+         dst.favPokemonObject = favoriteList[index]
     }
-    */
 
 }
