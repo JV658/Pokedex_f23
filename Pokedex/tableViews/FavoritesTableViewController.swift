@@ -8,11 +8,12 @@
 import UIKit
 import CoreData
 
-class FavoritesTableViewController: UITableViewController {
+class FavoritesTableViewController: UITableViewController, UISearchBarDelegate {
 
     var container: NSPersistentContainer!
     var favoriteList: [Favorites] = []
     
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +33,9 @@ class FavoritesTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         let favFetch = NSFetchRequest<Favorites>(entityName: "Favorites")
         favoriteList = try! container.viewContext.fetch(favFetch)
+        print("non-predicate resutls: \(favoriteList)")
         tableView.reloadData()
-        
+        searchBar.delegate = self
     }
 
     // MARK: - Table view data source
@@ -55,6 +57,31 @@ class FavoritesTableViewController: UITableViewController {
         cell.textLabel?.text = favoriteList[indexPath.row].name
 
         return cell
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        // create fetch request
+        let fetchRequest = NSFetchRequest<Favorites>(entityName: "Favorites")
+        
+        // if string is not empty add predicate to the fetch request
+        if !searchText.isEmpty {
+            // create predicate. name contains search text
+            var predicate: NSPredicate = NSPredicate()
+            predicate = NSPredicate(format: "name contains[c] '\(searchText)'")
+            
+            fetchRequest.predicate = predicate
+        }
+            
+        // fetch information based on the predicate
+        do {
+            favoriteList = try container.viewContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error)")
+        }
+        
+        // reload the data in the table view
+        tableView.reloadData()
     }
 
     /*

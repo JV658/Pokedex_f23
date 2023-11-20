@@ -109,20 +109,27 @@ class PokemonDetailedViewController: UIViewController {
          */
         let favoritesFetch = NSFetchRequest<Favorites>(entityName: "Favorites")
         
+        let filter = NSPredicate(format: "name == %@", pokemon.name)
+        favoritesFetch.predicate = filter
+        
+        let sort = NSSortDescriptor(key: #keyPath(Favorites.name), ascending: false)
+        favoritesFetch.sortDescriptors = [sort]
+                
         let results = try! container.viewContext.fetch(favoritesFetch)
                 
-        favButton.setImage(UIImage(systemName: "star"), for: .normal)
-        favButton.tintColor = .black
-        for fav in results {
-            if(fav.name == pokemon.name){
-                // if already fav make star yellow
-                favButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
-                favButton.tintColor = .yellow
-                favPokemonObject = fav
-                break;
-            }
-        }
+        print("predicate resutls: \(results)")
         
+        if results.count == 0 {
+            favButton.setImage(UIImage(systemName: "star"), for: .normal)
+            favButton.tintColor = .black
+        }
+        else
+        {
+            // if already fav make star yellow
+            favButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            favButton.tintColor = .yellow
+            favPokemonObject = results[0]
+        }
     }
     
 
