@@ -45,6 +45,28 @@ class PokemonDetailedViewController: UIViewController {
         }
     }
     
+    @objc func favoritePokemon(_ tapGestureRecognizer: UIGestureRecognizer){
+        print("tap recognized")
+        if favPokemonObject != nil {
+            favButton.setImage(UIImage(systemName: "star"), for: .normal)
+            favButton.tintColor = .black
+            // TODO: remove favorite
+            if let favPokemonObject = favPokemonObject {
+                container.viewContext.delete(favPokemonObject)
+            }
+            favPokemonObject = nil
+        } else {
+            favButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            favButton.tintColor = .yellow
+            // add this favorite to pokemon
+            let fav = Favorites(context: container.viewContext)
+            fav.name = pokemon.name
+            fav.url = pokemon.url
+            (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+            favPokemonObject = fav
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,6 +121,14 @@ class PokemonDetailedViewController: UIViewController {
                 print(error)
             }
         }
+        
+        let doubleTabGesture = UITapGestureRecognizer(target: self, action: #selector(favoritePokemon(_:)))
+        doubleTabGesture.numberOfTapsRequired = 2
+        doubleTabGesture.isEnabled = true
+        
+        // make sure that the IMAGE is set to isUserInteractionEnabled
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(doubleTabGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
